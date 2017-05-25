@@ -1,6 +1,6 @@
 {
-  "name": "micromustache",
-  "version": "5.2.0",
+  "name": "@cvpcasada/micromustache",
+  "version": "5.2.1",
   "description": "A faster and smaller subimplementation of the {{mustache}} template engine for JavaScript",
   "keywords": [
     "template",
@@ -11,6 +11,8 @@
     "microlibrary"
   ],
   "main": "index.js",
+  "module": "build/micromustache.js",
+  "browser": "build/micromustache.min.js",
   "bin": {
     "micromustache": "./bin/micromustache"
   },
@@ -18,18 +20,38 @@
     "lib": "./lib"
   },
   "devDependencies": {
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-class-properties": "^6.23.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.2.1",
     "chai": "^3.5.0",
     "eslint": "^3.13.0",
     "eslint-config-schibsted": "^3.1.0",
     "eslint-plugin-chai-expect": "^1.1.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsdoc": "^2.4.0",
+    "mkdirp": "^0.5.1",
     "mocha": "^3.0.0",
-    "mustache": "^2.3.0"
+    "mustache": "^2.3.0",
+    "npm-run-all": "^4.0.2",
+    "rimraf": "^2.6.1",
+    "rollup": "^0.41.5",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-inject": "^2.0.0",
+    "rollup-plugin-json": "^2.1.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-replace": "^1.1.1",
+    "rollup-plugin-uglify": "^1.0.1"
   },
   "scripts": {
     "test": "mocha ./test --recursive",
     "lint": "eslint .",
+    "build": "npm-run-all --sequential build:*",
+    "build:rimraf": "rimraf ./build",
+    "build:mkdirp": "mkdirp ./build",
+    "build:dedupe": "npm dedupe",
+    "build:rollup": "rollup -c && rollup -c --environment PRODUCTION",
     "preversion": "npm run lint && npm test",
     "postversion": "git push && git push --tags"
   },

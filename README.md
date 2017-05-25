@@ -4,6 +4,8 @@
 [![Downloads](https://img.shields.io/npm/dm/micromustache.svg?style=flat-square)](http://npm-stat.com/charts.html?package=micromustache&from=2017-01-01)
 [![MIT License](https://img.shields.io/npm/l/callifexists.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
+## This is a fork of micromustach by [userpixel](https://github.com/userpixel/micromustache) the difference is only the way it is bundled (uses rollup) to allow drop-in imports to environments like *create-react-app* and *Next.js*
+
 # micromustache
 
 ![Logo](https://raw.github.com/userpixel/micromustache/master/logo.png)
